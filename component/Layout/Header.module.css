@@ -1,0 +1,16 @@
+.main {
+  background-color: white;
+  position: fixed;
+  display: flex;
+  background: dimgrey;
+  width: 100%;
+  border-bottom: 1px solid white;
+  height: 55px;
+}
+
+.main h1 {
+  color: rgb(255, 255, 255);
+  align-self: center;
+  padding: 2%;
+  font-size: larger;
+}

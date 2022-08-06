@@ -1,8 +1,10 @@
+import { Link, useHistory } from "react-router-dom";
 import React, { useRef } from "react";
 import { Fragment } from "react";
 import classes from "./SignUp.module.css";
 
 const SignUp = () => {
+  const history = useHistory();
   const enteredEmailRef = useRef();
   const enteredPasswordRef = useRef();
   const confirmPasswordRef = useRef();
@@ -30,6 +32,7 @@ const SignUp = () => {
             res.json().then((data) => {
               console.log(data);
               console.log("User has successfully signed up.");
+              history.replace("/signin");
             });
           } else {
             return res.json().then((data) => {
@@ -87,7 +90,8 @@ const SignUp = () => {
             />
           </div>
           <div className={classes.actions}>
-            <button>"Sign UP"</button>
+            <button>"Sign Up"</button>
+            <Link to={"/signin"}>Already have a account? Sign In</Link>
           </div>
         </form>
       </section>
