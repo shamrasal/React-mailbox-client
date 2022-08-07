@@ -1,7 +1,10 @@
+import { useDispatch } from "react-redux";
 import React, { useRef } from "react";
 import { Link, useHistory } from "react-router-dom";
 import classes from "./SignIn.module.css";
+import { Authactions } from "../Store/Auth";
 const SignIn = () => {
+  const dispatch = useDispatch();
   const history = useHistory();
   const enteredEmailRef = useRef();
   const enteredPasswordRef = useRef();
@@ -25,7 +28,11 @@ const SignIn = () => {
       .then((res) => {
         if (res.ok) {
           console.log("ok");
-          history.replace("/home");
+          res.json().then((data) => {
+            console.log(data);
+            dispatch(Authactions.login(data.idToken));
+          });
+          history.replace("/compose");
         } else {
           res.json().then((data) => {
             console.log(data);

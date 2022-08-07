@@ -1,10 +1,10 @@
-import Header from "../Layout/Header";
+import { Fragment } from "react";
 
 const Home = () => {
   return (
-    <div>
-      <Header />
-    </div>
+    <Fragment>
+      <div>welcome to emailbox</div>
+    </Fragment>
   );
 };
 export default Home;

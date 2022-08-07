@@ -1,10 +1,10 @@
 .main {
   background-color: white;
-  position: fixed;
   display: flex;
   background: dimgrey;
   width: 100%;
-  border-bottom: 1px solid white;
+  text-align: center;
+  border-bottom: px solid white;
   height: 55px;
 }
 
