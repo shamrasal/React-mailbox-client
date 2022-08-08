@@ -5,6 +5,8 @@ import Header from "./component/Layout/Header";
 import SignIn from "./component/login/SignIn";
 import SignUp from "./component/login/SignUp";
 import Home from "./component/Pages/Home";
+import Inbox from "./component/components/Inbox";
+import Sent from "./component/components/Sent";
 
 function App() {
   const isLogIn = useSelector((state) => state.Auth.isLoggedIn);
@@ -20,7 +22,7 @@ function App() {
         )}
         {isLogIn && (
           <Route path={"/"} exact>
-            <Redirect to={"/home"} />
+            <Redirect to={"/inbox"} />
           </Route>
         )}
         {!isLogIn && (
@@ -35,6 +37,12 @@ function App() {
         )}
         <Route path={"/home"}>
           <Home />
+        </Route>
+        <Route path={"/inbox"}>
+          <Inbox />
+        </Route>
+        <Route path={"/sent"}>
+          <Sent />
         </Route>
         <Route path={"/compose"}>
           <ComposeMail />

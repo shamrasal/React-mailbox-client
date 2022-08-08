@@ -3,7 +3,7 @@
   margin-top: 5px;
   margin-right: 5px;
   width: 78%;
-  height: 440px;
+  height: 564px;
 }
 .intro {
   background-color: #ffffff;
@@ -39,12 +39,12 @@
 }
 
 .text {
-  background-color: #a3a3a3;
   margin: 1%;
   display: flex;
   height: 82%;
   margin-top: -5px;
   padding: 4px;
+  background-color: #a3a3a3;
   border-bottom: 1px solid white;
 }
 .text textarea {
@@ -53,7 +53,7 @@
 }
 
 .form {
-  height: 95%;
+  height: 74%;
 }
 
 .button {

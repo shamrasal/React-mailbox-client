@@ -32,6 +32,7 @@ const ComposeMail = () => {
       email: enteredEmail,
       sub: enteredSub,
       text: text,
+      date: new Date(),
     };
 
     fetch(

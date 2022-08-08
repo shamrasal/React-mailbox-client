@@ -1,0 +1,21 @@
+.mail {
+  margin-left: auto;
+  margin-top: -15px;
+  margin-right: 5px;
+  width: 78%;
+  height: 564px;
+  background-color: #a3a3a3;
+}
+
+.intro {
+  background-color: #ffffff;
+  border-top-left-radius: 13px;
+  border-top-right-radius: 13px;
+  margin: 1%;
+  height: 50px;
+}
+
+.intro h4 {
+  color: black;
+  padding: 1%;
+}

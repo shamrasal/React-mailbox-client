@@ -1,0 +1,28 @@
+.list {
+  background-color: #a3a3a3;
+  border-bottom: 1px solid white;
+  height: 35px;
+  display: flex;
+  width: 97%;
+  font-size: smaller;
+
+  justify-content: space-between;
+}
+
+.span1 {
+  display: flex;
+  width: 30%;
+}
+
+.span2 {
+  display: contents;
+  width: 40%;
+  justify-content: center;
+}
+
+.span3 {
+  display: flow-root;
+  width: 40%;
+  text-align: end;
+  white-space: pre-line;
+}
