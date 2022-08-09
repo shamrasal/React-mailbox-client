@@ -10,10 +10,18 @@ const SideBar = () => {
       >
         Inbox
       </NavLink>
-      <NavLink className={classes.link} to={"/compose"}>
+      <NavLink
+        activeClassName={classes.link1}
+        className={classes.link}
+        to={"/compose"}
+      >
         Compose Mail
       </NavLink>
-      <NavLink className={classes.link} to={"/sent"}>
+      <NavLink
+        activeClassName={classes.link1}
+        className={classes.link}
+        to={"/sent"}
+      >
         sent
       </NavLink>
     </div>

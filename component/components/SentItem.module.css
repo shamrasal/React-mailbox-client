@@ -5,7 +5,17 @@
   display: flex;
   width: 97%;
   font-size: smaller;
+  justify-content: space-between;
+}
 
+.list:hover {
+  background-color: #474747;
+  border-bottom: 1px solid white;
+  height: 35px;
+  display: flex;
+  color: white;
+  width: 97%;
+  font-size: smaller;
   justify-content: space-between;
 }
 
@@ -15,9 +25,8 @@
 }
 
 .span2 {
-  display: contents;
+  display: flex;
   width: 40%;
-  justify-content: center;
 }
 
 .span3 {
@@ -25,4 +34,22 @@
   width: 40%;
   text-align: end;
   white-space: pre-line;
+}
+
+.dot {
+  height: 25px;
+  width: 25px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.sec1 {
+  font-weight: bold;
+  margin-right: 4px;
+}
+
+.link {
+  display: contents;
+  color: black;
 }

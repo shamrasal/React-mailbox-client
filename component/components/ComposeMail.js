@@ -1,13 +1,20 @@
 import { useState, useRef } from "react";
-import { EditorState, convertToRaw } from "draft-js";
+import { useSelector, useDispatch } from "react-redux";
+import { EditorState } from "draft-js";
 import { Editor } from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import "./ComposeMail.css";
+import swal from "sweetalert";
 
 import classes from "./ComposeMail.module.css";
+import { Sentactions } from "../Store/Sent";
 const ComposeMail = () => {
+  const dispatch = useDispatch();
+  const sent = useSelector((state) => state.Sent.items);
+  const email = useSelector((state) => state.Auth.email);
   const enteredEmailRef = useRef();
   const enteredSubRef = useRef();
+  console.log(sent);
 
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()
@@ -24,25 +31,44 @@ const ComposeMail = () => {
     event.preventDefault();
     const enteredEmail = enteredEmailRef.current.value;
     const enteredSub = enteredSubRef.current.value;
-
-    const item = convertToRaw(editorState.getCurrentContent());
-    const text = item.blocks[0].text;
+    const to = enteredEmail.replace(/[^a-zA-Z ]/g, "");
+    const item = editorState.getCurrentContent().getPlainText();
+    console.log(item);
+    // const email = localStorage.getItem("email");
 
     const input = {
       email: enteredEmail,
       sub: enteredSub,
-      text: text,
-      date: new Date(),
+      from: email,
+      text: item,
+      date: new Date().toString(),
+      seen: false,
     };
-
     fetch(
-      "https://email-box-client-default-rtdb.firebaseio.com/emailsent.json",
+      `https://email-box-client-default-rtdb.firebaseio.com/${to}/inbox.json`,
       {
         method: "POST",
         body: JSON.stringify(input),
       }
     )
       .then((res) => {
+        if (res.ok) {
+          swal("Mail Sent!", "Your email sent successfully!", "success");
+          dispatch(Sentactions.addsent(input));
+          fetch(
+            `https://email-box-client-default-rtdb.firebaseio.com/${email}/sent.json`,
+            {
+              method: "POST",
+              body: JSON.stringify(sent),
+            }
+          )
+            .then((res) => {
+              console.log(res);
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        }
         console.log(res);
       })
       .catch((err) => {

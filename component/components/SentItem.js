@@ -1,18 +1,31 @@
+import { Link } from "react-router-dom";
 import classes from "./SentItem.module.css";
 const SentItem = (props) => {
-  let str = props.text;
-  console.log(str);
-  if (str.length > 10) str = str.substring(0, 10);
-  let date = props.Date;
-  console.log(date);
-  if (date.length > 10) date = date.substring(0, 10);
-
   console.log(props);
+  let str = props.text;
+  if (str.length > 10) str = str.substring(0, 40);
+  // const year = props.date.getFullYear().toString();
+  // const month = props.date.getMonth().toString();
+  // const day = props.date.getDate().toString();
+
+  let date1 = props.date;
+  if (date1.length > 10) date1 = date1.substring(0, 15);
+  console.log(date1);
+  let email = props.email;
+  if (email.length > 10) email = email.substring(0, 15);
+  let sub = props.sub;
+  if (sub.length > 10) sub = sub.substring(0, 15);
+
   return (
     <div className={classes.list}>
-      <div className={classes.span1}>{props.email}</div>
-      <div className={classes.span2}>{str}</div>
-      <div className={classes.span3}>{date}</div>
+      <Link className={classes.link} to={`/sent/${props.id}`}>
+        <div className={classes.span1}>{email}</div>
+        <div className={classes.span2}>
+          <span className={classes.sec1}>{sub}</span>
+          <span>{str}</span>
+        </div>
+        <div className={classes.span3}>{date1}</div>
+      </Link>
     </div>
   );
 };

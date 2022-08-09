@@ -30,7 +30,10 @@ const SignIn = () => {
           console.log("ok");
           res.json().then((data) => {
             console.log(data);
-            dispatch(Authactions.login(data.idToken));
+            const loginEmail = enteredEmail.replace(/[^a-zA-Z ]/g, "");
+            dispatch(
+              Authactions.login({ token: data.idToken, email: loginEmail })
+            );
           });
           history.replace("/compose");
         } else {

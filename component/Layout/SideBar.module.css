@@ -19,6 +19,15 @@
   background-color: #00000042;
 }
 
+.link:hover {
+  color: white;
+  display: block;
+  padding: 7%;
+  width: 100%;
+  margin-bottom: 8px;
+  background-color: #86868646;
+}
+
 .link1 {
   color: white;
   display: block;
