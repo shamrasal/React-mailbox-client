@@ -4,6 +4,7 @@ import InboxItems from "./InboxItems";
 import classes from "./Index.module.css";
 const Inbox = () => {
   const [inboxlist, setInboxList] = useState();
+  const [unseenMail, setUnseenMail] = useState();
   const email = useSelector((state) => state.Auth.email);
   useEffect(() => {
     fetch(
@@ -26,7 +27,11 @@ const Inbox = () => {
                 text: data[key].text,
               });
             }
+            let unseen = 0;
             const inboxItems = loadedData.map((inbox) => {
+              if (inbox.seen === false) {
+                unseen++;
+              }
               return (
                 <InboxItems
                   key={inbox.key}
@@ -40,6 +45,7 @@ const Inbox = () => {
                 />
               );
             });
+            setUnseenMail(unseen);
             setInboxList(inboxItems);
           });
         }
@@ -54,7 +60,7 @@ const Inbox = () => {
     <div className={classes.mail}>
       <div className={classes.intro}>
         <h4>Inbox</h4>
-        <h4>Unread Message{0}</h4>
+        <h4>Unread Message{unseenMail}</h4>
       </div>
       <ul>{inboxlist}</ul>
     </div>

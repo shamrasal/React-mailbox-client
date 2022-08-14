@@ -59,7 +59,7 @@ const ComposeMail = () => {
             `https://email-box-client-default-rtdb.firebaseio.com/${email}/sent.json`,
             {
               method: "POST",
-              body: JSON.stringify(sent),
+              body: JSON.stringify(input),
             }
           )
             .then((res) => {

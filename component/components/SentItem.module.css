@@ -21,17 +21,17 @@
 
 .span1 {
   display: flex;
-  width: 30%;
+  width: 25%;
 }
 
 .span2 {
   display: flex;
-  width: 40%;
+  width: 60%;
 }
 
 .span3 {
   display: flow-root;
-  width: 40%;
+  width: 20%;
   text-align: end;
   white-space: pre-line;
 }
@@ -47,6 +47,12 @@
 .sec1 {
   font-weight: bold;
   margin-right: 4px;
+  width: 30%;
+}
+
+.sec2 {
+  margin-right: 4px;
+  width: 70%;
 }
 
 .link {

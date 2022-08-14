@@ -6,7 +6,7 @@ const SentDetails = () => {
   const [item, setItem] = useState("");
   const email = useSelector((state) => state.Auth.email);
   const param = useParams();
-  console.log(param);
+
   useEffect(() => {
     fetch(
       `https://email-box-client-default-rtdb.firebaseio.com/${email}/sent/${param.productId}.json`

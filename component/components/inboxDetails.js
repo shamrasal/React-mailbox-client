@@ -6,14 +6,27 @@ const InboxDetails = () => {
   const [item, setItem] = useState("");
   const email = useSelector((state) => state.Auth.email);
   const param = useParams();
+  var str = item.sub;
+  if (str.length > 10) str = str.substring(0, 8);
+  console.log(str);
+
   useEffect(() => {
     fetch(
       `https://email-box-client-default-rtdb.firebaseio.com/${email}/inbox/${param.productId}.json`
     )
       .then((res) => {
         res.json().then((data) => {
-          console.log(data);
+          // console.log(data);
+          const newData = { ...data, seen: true };
+          console.log(newData);
           setItem(data);
+          fetch(
+            `https://email-box-client-default-rtdb.firebaseio.com/${email}/inbox/${param.productId}.json`,
+            {
+              method: "PUT",
+              body: JSON.stringify(newData),
+            }
+          );
         });
         console.log(res);
       })
@@ -21,7 +34,6 @@ const InboxDetails = () => {
         console.log(err);
       });
   }, [param.productId, email]);
-  console.log(item);
   return (
     <div className={classes.mail}>
       <div className={classes.border}>
