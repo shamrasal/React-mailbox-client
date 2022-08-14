@@ -5,6 +5,8 @@ import classes from "./Index.module.css";
 const Inbox = () => {
   const [inboxlist, setInboxList] = useState();
   const [unseenMail, setUnseenMail] = useState();
+  const [retry, setretry] = useState(false);
+  console.log(retry);
   const email = useSelector((state) => state.Auth.email);
   useEffect(() => {
     fetch(
@@ -42,6 +44,7 @@ const Inbox = () => {
                   seen={inbox.seen}
                   sub={inbox.sub}
                   text={inbox.text}
+                  retry={setretry}
                 />
               );
             });
@@ -54,7 +57,7 @@ const Inbox = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, [email]);
+  }, [email, retry]);
 
   return (
     <div className={classes.mail}>

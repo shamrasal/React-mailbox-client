@@ -48,6 +48,10 @@
   text-align: end;
   white-space: pre-line;
 }
+.span4 {
+  width: 10%;
+  padding: 1px;
+}
 
 .sec1 {
   font-weight: bold;
@@ -58,4 +62,9 @@
 .sec2 {
   margin-right: 4px;
   width: 70%;
+}
+.button {
+  background-color: red;
+  color: white;
+  border: 1px solid white;
 }
