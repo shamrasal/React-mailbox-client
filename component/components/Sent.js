@@ -4,6 +4,8 @@ import classes from "./Sent.module.css";
 import SentItem from "./SentItem";
 const Sent = () => {
   const [list, setList] = useState();
+  const [retry, setretry] = useState(false);
+  console.log(retry);
   const sent = useSelector((state) => state.Sent.items);
   const email = useSelector((state) => state.Auth.email);
   console.log(email);
@@ -40,6 +42,7 @@ const Sent = () => {
               text={sent.text}
               date={sent.date}
               sub={sent.sub}
+              retry={setretry}
             />
           ));
           setList(content);
@@ -48,7 +51,7 @@ const Sent = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, [email]);
+  }, [email, retry]);
   console.log(list);
 
   return (

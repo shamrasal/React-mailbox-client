@@ -22,7 +22,7 @@ const InboxItems = (props) => {
     )
       .then((res) => {
         console.log(res);
-        props.retry(true);
+        props.retry((prev) => !prev);
       })
       .catch((err) => {
         console.log(err);
