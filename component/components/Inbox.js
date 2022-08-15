@@ -9,6 +9,12 @@ const Inbox = () => {
   console.log(retry);
   const email = useSelector((state) => state.Auth.email);
   useEffect(() => {
+    setInterval(() => {
+      setTimeout(() => {
+        setretry((prev) => !prev);
+      }, 2000);
+    }, 2000);
+
     fetch(
       `https://email-box-client-default-rtdb.firebaseio.com/${email}/inbox.json`
     )
